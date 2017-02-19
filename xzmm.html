@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>旋转木马</title>
+</head>
+<style>
+	body,li,ul{
+		padding:0;margin:0;border:0;list-style: none;
+	}
+	.box{
+		width: 800px;height: 500px;
+		border:1px solid #ccc;
+		margin:50px auto 0;
+		perspective:1200px;
+	}
+	.inner{
+		width: 400px;height: 260px;
+		margin:120px 200px;
+		position: relative;
+		transform-style:preserve-3d;
+		transition:transform 2s linear;
+	}
+	.inner li{
+		width: 100%;height: 100%;position: absolute;
+		font-size: 100px;color: #fff;text-align: center;line-height: 260px;
+	}
+	.inner li:nth-child(1){
+		background: url(images/1.jpg) no-repeat center center/cover;
+	}
+	.inner li:nth-child(2){
+		background: url(images/2.jpg) no-repeat center center/cover;
+	}
+	.inner li:nth-child(3){
+		background: url(images/3.jpg) no-repeat center center/cover;
+	}
+	.inner li:nth-child(4){
+		background: url(images/4.jpg) no-repeat center center/cover;
+	}
+	.inner li:nth-child(5){
+		background: url(images/5.jpg) no-repeat center center/cover;
+	}
+	.inner li:nth-child(6){
+		background: url(images/6.jpg) no-repeat center center/cover;
+	}
+	.inner li:nth-child(7){
+		background: url(images/7.jpg) no-repeat center center/cover;
+	}
+	.inner li:nth-child(8){
+		background: url(images/8.jpg) no-repeat center center/cover;
+	}
+	.inner li:nth-child(9){
+		background: url(images/9.jpg) no-repeat center center/cover;
+	}
+	.inner li:nth-child(10){
+		background: url(images/10.jpg) no-repeat center center/cover;
+	}
+	.left{
+		width: 100px;height: 50px;background: #ccc;color: #fff;line-height: 50px;text-align: center;font-size: 30px;float: left;cursor: pointer;
+	}
+	.right{
+		width: 100px;height: 50px;background: #ccc;color: #fff;line-height: 50px;text-align: center;font-size: 30px;float: right;cursor: pointer;
+	}
+</style>
+<body>
+	<div class="box">
+		<ul class="inner">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<div class="left">上一张</div>
+	<div class="right">下一张</div>
+	<script>
+		var inner=document.getElementsByClassName("inner")[0];
+		var lis=inner.getElementsByTagName("li");
+		var box=document.getElementsByClassName("box")[0];
+		var left=document.getElementsByClassName("left")[0];
+		var right=document.getElementsByClassName("right")[0];
+		var Ang=360/lis.length;
+		console.log(left,right)
+		var imgW = lis[0].offsetWidth;
+		var r=imgW/2/Math.tan(Ang/2/180*Math.PI)+20;
+		for (var i = 0; i < lis.length; i++) {
+			lis[i].style.transform="rotateY("+i*Ang+"deg) translateZ("+r+"px)";
+		};
+		var aa=0;
+		var t=setInterval(move,2000)
+		function move(){
+			aa-=Ang;
+			inner.style.transform="rotateY("+aa+"deg)";
+		}
+		left.onclick=function(){
+			clearInterval(t)
+				aa-=Ang;
+				inner.style.transform="rotateY("+aa+"deg)";
+				t=setInterval(move,2000)
+		}
+		right.onclick=function(){
+			clearInterval(t)
+				aa+=Ang;
+				inner.style.transform="rotateY("+aa+"deg)";
+				t=setInterval(move,2000)
+		}
+	</script>
+</body>
+</html>

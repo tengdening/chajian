@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>gif图</title>
+</head>
+<style>
+    .box{
+        width:calc(450px/5);
+        height:247px;
+        background:url("img/3.jpg") no-repeat ;
+        margin:100px auto 0;
+        animation:aa .5s steps(5) infinite;
+    }
+    @keyframes aa{
+        0%{
+            background-position:0 0;
+        }
+        100%{
+            background-position:-450px 0;
+        }
+    }
+    .box1{
+        width:calc(500px/7);
+        height:130px;
+        background:url(img/2.jpg) no-repeat;
+        animation:bb .5s steps(7) infinite;        margin:0 auto;
+
+    }
+    @keyframes bb{
+        0%{
+            background-position:0 0;
+        }
+        100%{
+            background-position:-500px 0;
+        }
+    }
+</style>
+<body>
+<div class="box"></div>
+<div class="box1"></div>
+</body>
+</html>
